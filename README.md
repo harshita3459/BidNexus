@@ -1,92 +1,138 @@
-# AI-Powered Auction Platform (Demo Version)
+# BidNexus - Online Auction Platform
 
-A simplified demonstration of an auction platform showcasing core auction management functionality.
-
-## Features
-
-- Create and manage auctions
-- View active auctions
-- Update auction details
-- Delete auctions
-- Filter auctions by status and category
-
-## Tech Stack
-
-- Node.js
-- Express.js
-- MongoDB
-- Mongoose for database modeling
-
-## API Endpoints
-
-### Auctions
-- GET /api/auctions - Get all auctions
-- GET /api/auctions/:id - Get single auction
-- POST /api/auctions - Create new auction
-- PUT /api/auctions/:id - Update auction
-- DELETE /api/auctions/:id - Delete auction
-
-### Query Parameters
-- status: Filter auctions by status (pending, active, completed, cancelled)
-- category: Filter auctions by category
-
-## Installation
-
-1. Clone the repository
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-3. Create a .env file with the following variables:
-   ```
-   PORT=5000
-   MONGODB_URI=mongodb://localhost:27017/auction-platform
-   NODE_ENV=development
-   ```
-4. Start the server:
-   ```bash
-   npm start
-   ```
-
-## Environment Variables
-
-- PORT: Server port (default: 5000)
-- MONGODB_URI: MongoDB connection string
-- NODE_ENV: Environment (development/production)
-
-## Seeding the Database
-
-To populate the database with sample auctions:
-
-```bash
-npm run seed
-```
-
-This will create three sample auctions:
-1. Vintage Camera Collection
-2. Smartphone X Pro
-3. Diamond Ring
+BidNexus is a modern online auction platform built with React, TypeScript, Node.js, Express, and MongoDB. The platform allows users to buy and sell items through an auction system.
 
 ## Project Structure
 
 ```
-src/
-├── controllers/
-│   └── auction.controller.js
-├── models/
-│   └── auction.model.js
-├── routes/
-│   └── auction.routes.js
-├── index.js
-└── seed.js
+BidNexus/
+├── src/                    # Frontend React application
+│   ├── components/         # Reusable React components
+│   ├── contexts/           # React context providers
+│   ├── pages/              # Page components
+│   ├── types/              # TypeScript type definitions
+│   └── config/             # Configuration files
+├── server/                 # Backend Express application
+│   ├── src/
+│   │   ├── models/         # MongoDB models
+│   │   ├── routes/         # API routes
+│   │   ├── middleware/     # Express middleware
+│   │   └── config/         # Server configuration
+│   └── package.json        # Backend dependencies
+├── public/                 # Static files
+└── package.json            # Frontend dependencies
 ```
 
-## Note
+## Features
 
-This is a simplified version of the auction platform for demonstration purposes. The full version would include:
-- User authentication and authorization
-- Bidding system
-- Payment processing
-- Real-time updates
-- AI-powered bid analysis
-- Admin dashboard 
+- User authentication with JWT
+- Create and manage auctions
+- Place bids on items
+- Real-time bid updates
+- User profiles and dashboard
+- Secure payment processing
+- Responsive design
+
+## Prerequisites
+
+- Node.js (v14 or higher)
+- MongoDB
+- npm or yarn
+
+## Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/yourusername/BidNexus.git
+cd BidNexus
+```
+
+2. Install frontend dependencies:
+```bash
+npm install
+```
+
+3. Install backend dependencies:
+```bash
+cd server
+npm install
+cd ..
+```
+
+4. Create environment variables:
+   - Create `.env` file in the root directory for frontend
+   - Create `.env` file in the `server` directory for backend
+
+5. Start the development servers:
+   - Frontend (from root directory):
+   ```bash
+   npm start
+   ```
+   - Backend (from server directory):
+   ```bash
+   npm run dev
+   ```
+
+## Environment Variables
+
+### Frontend (.env)
+```
+REACT_APP_API_URL=http://localhost:5001
+```
+
+### Backend (server/.env)
+```
+PORT=5001
+MONGODB_URI=mongodb://localhost:27017/bidnexus
+JWT_SECRET=your_jwt_secret
+JWT_EXPIRES_IN=24h
+NODE_ENV=development
+```
+
+## Available Scripts
+
+### Frontend
+- `npm start` - Start development server
+- `npm build` - Build for production
+- `npm test` - Run tests
+- `npm run lint` - Run linter
+
+### Backend
+- `npm run dev` - Start development server with nodemon
+- `npm start` - Start production server
+- `npm test` - Run tests
+
+## API Documentation
+
+### Authentication
+- POST `/api/auth/register` - Register new user
+- POST `/api/auth/login` - Login user
+- GET `/api/auth/me` - Get current user
+
+### Items
+- GET `/api/items` - Get all items
+- POST `/api/items` - Create new item
+- GET `/api/items/:id` - Get item by ID
+- PUT `/api/items/:id` - Update item
+- DELETE `/api/items/:id` - Delete item
+
+### Bids
+- POST `/api/bids/:itemId` - Place a bid
+- GET `/api/bids/:itemId` - Get bids for an item
+
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Contact
+
+Your Name - your.email@example.com
+Project Link: https://github.com/yourusername/BidNexus
